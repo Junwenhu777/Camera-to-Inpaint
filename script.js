@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const video = document.getElementById('video');
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
     let videoWidth, videoHeight;
@@ -11,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hasUserMedia) {
       navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
         .then((stream) => {
+          const video = document.createElement('video');
           video.srcObject = stream;
           video.onloadedmetadata = () => {
             video.play();
@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             adjustCanvasSize();
             requestAnimationFrame(captureFrame);
           };
+          canvas.parentNode.insertBefore(video, canvas);
         })
         .catch((error) => {
           console.log('Error accessing camera:', error);
@@ -52,5 +53,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adjust canvas size when the window is resized
     window.addEventListener('resize', adjustCanvasSize);
   });
-  
   
