@@ -1,20 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Camera-to-Inpaint Website</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="container">
-        <video id="camera" autoplay></video>
-        <canvas id="canvas"></canvas>
-        <button id="captureBtn">Capture</button>
-      </div>
+  <canvas id="canvas"></canvas>
+  <div class="loading">
+    <div class="loading-icon"></div>
+  </div>
+
   <script src="script.js"></script>
 </body>
-
 </html>

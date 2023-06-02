@@ -1,28 +1,65 @@
-body {
+/* style.css */
+
+body, html {
+    height: 100%;
     margin: 0;
-    padding: 0;
   }
   
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f1f1f1;
-  }
-  
-  video,
-  canvas {
+  #canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    max-width: 100%;
-    border: 1px solid #ccc;
+    height: 100%;
   }
   
-  #captureBtn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
+  .circle {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    animation: shine 2s infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes shine {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.8);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+  }
+  
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  
+  .loading-icon {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #333;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   
   
