@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Initialize camera stream
     if (hasUserMedia) {
-      navigator.mediaDevices.getUserMedia({ video: true })
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
         .then((stream) => {
           video.srcObject = stream;
           video.onloadedmetadata = () => {
@@ -52,4 +52,5 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adjust canvas size when the window is resized
     window.addEventListener('resize', adjustCanvasSize);
   });
+  
   
