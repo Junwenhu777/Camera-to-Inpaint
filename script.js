@@ -2,8 +2,18 @@
 var video = document.getElementById('video');
 
 // Check if the browser supports media devices and getUserMedia
-if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   // Request permission to access the camera
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function(stream) {
+      // Set the video source to the user's camera stream
+      video.srcObject = stream;
+    })
+    .catch(function(error) {
+      console.error('Error accessing camera:', error);
+    });
+} else if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+  // Request permission to access the camera using enumerateDevices
   navigator.mediaDevices.enumerateDevices()
     .then(function(devices) {
       // Find the video input device
